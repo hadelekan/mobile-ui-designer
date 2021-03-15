@@ -1,21 +1,17 @@
 <template>
-  <div class="column">
+  <div class="py-2">
     <div class="card">
-      <header class="card-header">
+      <header class="card-header" v-if="config.header.title">
         <p class="card-header-title has-text-grey">
-          {{ title }}
+          {{ config.header.title }}
         </p>
       </header>
-      <div class="card-content">
+      <div class="card-content" v-if="config.content.text">
         <div class="content has-text-centered">
-          <b-icon
-            :icon="icon"
-            size="is-large"
-            type="is-primary"
-          />
+          {{config.content.text}}
         </div>
       </div>
-      <footer class="card-footer">
+      <footer class="card-footer" v-if="config.footer.text">
         <div class="card-footer-item">
           <span>
             <slot />
@@ -28,15 +24,6 @@
 
 <script>
 export default {
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    icon: {
-      type: String,
-      required: true
-    }
-  }
+  props: ['config']
 }
 </script>

@@ -1,53 +1,57 @@
 <template>
-  <section class="section">
-    <div class="columns is-mobile">
-      <card
-        title="Free"
-        icon="github"
-      >
-        Open source on <a href="https://github.com/buefy/buefy">
-          GitHub
-        </a>
-      </card>
-
-      <card
-        title="Responsive"
-        icon="cellphone-link"
-      >
-        <b class="has-text-grey">
-          Every
-        </b> component is responsive
-      </card>
-
-      <card
-        title="Modern"
-        icon="alert-decagram"
-      >
-        Built with <a href="https://vuejs.org/">
-          Vue.js
-        </a> and <a href="http://bulma.io/">
-          Bulma
-        </a>
-      </card>
-
-      <card
-        title="Lightweight"
-        icon="arrange-bring-to-front"
-      >
-        No other internal dependency
-      </card>
-    </div>
-  </section>
+  <div>
+    <Header></Header>
+    <section class="is-flex stage">
+      <SideNav />
+      <div class="is-flex-grow-1 is-flex" style="position:relative">
+        <ProjectPanel />
+        <LibraryPanel />
+        <Panes :size="{width:275, height: 300}" title="Properties">
+          <NavigationPane />
+          <DevicePane />
+          <StylePane />
+          <ConfigPane />
+          <ThemeRollerPane />
+        </Panes>
+        <Device class="m-auto" />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
-import Card from '~/components/Card'
+import Device from '@/components/Device'
+import LibraryPanel from '@/components/navigations/LibraryPanel'
+import ProjectPanel from '@/components/navigations/ProjectPanel'
+import SideNav from '@/components/navigations/SideNav'
+import DevicePane from '@/components/panes/DevicePane'
+import NavigationPane from '@/components/panes/NavigationPane'
+import StylePane from '@/components/panes/StylePane'
+import Panes from '@/components/Panes'
+import ThemeRollerPane from '@/components/panes/ThemeRollerPane'
+import ConfigPane from '@/components/panes/ConfigPane.vue'
 
 export default {
   name: 'HomePage',
-
+  layout: 'editor',
   components: {
-    Card
+    Device,
+    Panes,
+    DevicePane,
+    NavigationPane,
+    StylePane,
+    LibraryPanel,
+    ProjectPanel,
+    SideNav,
+    ThemeRollerPane,
+    ConfigPane
   }
 }
+
 </script>
+<style scoped>
+  .stage{
+    height: calc(100vh - 56px);
+    position: relative;
+  }
+</style>

@@ -20,6 +20,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '@/assets/app.css',
+    '@/assets/fonts/flaticon.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -37,6 +39,24 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyDr7qdrkDCuvVVS7NHFQBW4dhwxkhbb2c8",
+          authDomain: "mobile-designer-1e44e.firebaseapp.com",
+          projectId: "mobile-designer-1e44e",
+          storageBucket: "mobile-designer-1e44e.appspot.com",
+          messagingSenderId: "155768646725",
+          appId: "1:155768646725:web:c6d2a5a65e33582e81472c"
+        },
+        services: {
+          auth: true, // Just as example. Can be any other service.
+          firestore: true,
+          storage: true,
+        }
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
